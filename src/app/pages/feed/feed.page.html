@@ -1,0 +1,151 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="trophy-outline" class="title-icon"></ion-icon>
+      Game Survey Feed
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Pull to refresh -->
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Desliza para actualizar"
+      refreshingSpinner="crescent"
+      refreshingText="Actualizando...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Contador de encuestas -->
+  <div class="feed-header">
+    <p class="feed-subtitle">{{ surveys().length }} encuestas registradas</p>
+  </div>
+
+  <!-- ── SKELETON LOADING ── -->
+  @if (isLoading()) {
+    @for (skeleton of skeletons; track $index) {
+      <ion-card class="survey-card skeleton-card">
+        <ion-skeleton-text animated class="skeleton-image"></ion-skeleton-text>
+        <ion-card-header>
+          <ion-skeleton-text animated class="skeleton-title"></ion-skeleton-text>
+          <ion-skeleton-text animated class="skeleton-subtitle"></ion-skeleton-text>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-skeleton-text animated class="skeleton-line-lg"></ion-skeleton-text>
+          <ion-skeleton-text animated class="skeleton-line-md"></ion-skeleton-text>
+        </ion-card-content>
+      </ion-card>
+    }
+  }
+
+  <!-- ── LISTA DE ENCUESTAS ── -->
+  @if (!isLoading()) {
+
+    <!-- Empty state -->
+    @if (surveys().length === 0) {
+      <div class="empty-state">
+        <ion-icon name="game-controller-outline" class="empty-icon"></ion-icon>
+        <h2>Sin encuestas aún</h2>
+        <p>Registra la primera encuesta del campus</p>
+      </div>
+    }
+
+    @for (survey of surveys(); track survey.id) {
+      <ion-card class="survey-card">
+
+        <!-- Imagen de evidencia -->
+        @if (survey.image_url) {
+          <div class="card-image-wrapper">
+            <img
+              [src]="survey.image_url"
+              [alt]="'Evidencia de ' + survey.respondent_name"
+              class="card-image"
+              loading="lazy"
+              (error)="onImageError($event)"
+            />
+            <div class="image-overlay">
+              <ion-chip color="success" class="game-chip">
+                <ion-icon name="game-controller-outline"></ion-icon>
+                <ion-label>{{ survey.favorite_game }}</ion-label>
+              </ion-chip>
+            </div>
+          </div>
+        } @else {
+          <div class="no-image-placeholder">
+            <ion-icon name="game-controller-outline"></ion-icon>
+            <span>{{ survey.favorite_game }}</span>
+          </div>
+        }
+
+        <!-- Encabezado de card -->
+        <ion-card-header>
+          <ion-card-title class="card-title">{{ survey.favorite_game }}</ion-card-title>
+          <ion-card-subtitle class="card-subtitle">
+            <ion-icon name="person-outline"></ion-icon>
+            {{ survey.respondent_name }} &middot; {{ survey.role }}
+          </ion-card-subtitle>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <!-- Chips de metadata -->
+          <div class="chips-row">
+            <ion-chip outline color="primary" class="meta-chip">
+              <ion-icon [name]="getPlatformIcon(survey.platform)"></ion-icon>
+              <ion-label>{{ survey.platform }}</ion-label>
+            </ion-chip>
+            <ion-chip outline color="secondary" class="meta-chip">
+              <ion-label>{{ survey.genre }}</ion-label>
+            </ion-chip>
+            <ion-chip outline color="warning" class="meta-chip">
+              <ion-label>{{ survey.age_range }}</ion-label>
+            </ion-chip>
+          </div>
+
+          <!-- Ubicación -->
+          <div class="info-row">
+            <ion-icon name="location-outline" color="danger"></ion-icon>
+            <ion-text color="medium">
+              <span>{{ survey.campus_location }}</span>
+              <small class="coords">
+                ({{ survey.latitude | number:'1.4-4' }},
+                {{ survey.longitude | number:'1.4-4' }})
+              </small>
+            </ion-text>
+          </div>
+
+          <!-- Fecha -->
+          <div class="info-row">
+            <ion-icon name="calendar-outline" color="tertiary"></ion-icon>
+            <ion-text color="medium">
+              <span>{{ survey.created_at | date:'dd MMM yyyy, HH:mm' : '' : 'es-EC' }}</span>
+            </ion-text>
+          </div>
+
+          <!-- Comentario -->
+          @if (survey.comment) {
+            <div class="comment-box">
+              <ion-icon name="chatbubble-outline" color="medium"></ion-icon>
+              <ion-text color="light">
+                <p class="comment-text">"{{ survey.comment }}"</p>
+              </ion-text>
+            </div>
+          }
+
+        </ion-card-content>
+      </ion-card>
+    }
+  }
+
+  <!-- Infinite scroll (stub, listo para paginación) -->
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="Cargando más...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

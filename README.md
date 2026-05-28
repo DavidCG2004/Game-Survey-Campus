@@ -1,1 +1,1 @@
-# Game-Survey-Campus
+Implementar un login utilizando Supabase
