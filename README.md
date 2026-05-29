@@ -37,7 +37,7 @@ Este proyecto fue construido siguiendo estándares de desarrollo **Senior** para
 
 ## 📱 Capturas de Pantalla
 
-|src="<img width="1366" height="768" alt="Captura de pantalla (156)" src="https://github.com/user-attachments/assets/fc5a4631-3b41-43d0-aad0-91fe0e9c9161" />| <img src="<img width="1366" height="768" alt="Captura de pantalla (152)" src="https://github.com/user-attachments/assets/8f76fb70-7813-43ba-97cd-6a61d90bb459" />
+|src="<img width="1366" height="768" alt="Captura de pantalla (156)" src="https://github.com/user-attachments/assets/fc5a4631-3b41-43d0-aad0-91fe0e9c9161" />| src="<img width="1366" height="768" alt="Captura de pantalla (152)" src="https://github.com/user-attachments/assets/8f76fb70-7813-43ba-97cd-6a61d90bb459" />
  | src="<img width="1366" height="768" alt="Captura de pantalla (157)" src="https://github.com/user-attachments/assets/d57a8f5a-206c-4a6f-9b5b-a65029359e9c" />
  |src="<img width="1366" height="768" alt="Captura de pantalla (153)" src="https://github.com/user-attachments/assets/ed503d6e-8c8a-4985-b4c4-d42e1a434720" />
 |src="<img width="1366" height="768" alt="Captura de pantalla (154)" src="https://github.com/user-attachments/assets/d534ec1c-c61e-49b9-9452-72afbc163b53" /> |
