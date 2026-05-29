@@ -39,7 +39,9 @@ Este proyecto fue construido siguiendo estándares de desarrollo **Senior** para
 
 | Splash & Login | Feed / Dashboard | Búsqueda Predictiva | Detalle y GPS | Invitación & QR |
 | :---: | :---: | :---: | :---: | :---: |
-| <img src="URL_IMAGEN_1" width="200"/> | <img src="URL_IMAGEN_2" width="200"/> | <img src="URL_IMAGEN_3" width="200"/> | <img src="URL_IMAGEN_4" width="200"/> | <img src="URL_IMAGEN_5" width="200"/> |
+| <img src="<img width="1366" height="768" alt="Captura de pantalla (156)" src="https://github.com/user-attachments/assets/fc5a4631-3b41-43d0-aad0-91fe0e9c9161" />
+" width="200"/> | <img src="<img width="1366" height="768" alt="Captura de pantalla (152)" src="https://github.com/user-attachments/assets/8f76fb70-7813-43ba-97cd-6a61d90bb459" />
+" width="200"/> | <img src="URL_IMAGEN_3" width="200"/> | <img src="URL_IMAGEN_4" width="200"/> | <img src="URL_IMAGEN_5" width="200"/> |
 
 > Reemplaza `URL_IMAGEN_X` con los enlaces a tus capturas subidas a una carpeta `/docs` o `/assets` en este repositorio.
 
