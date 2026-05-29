@@ -58,7 +58,7 @@ Este proyecto fue construido siguiendo estándares de desarrollo **Senior** para
 1. **Clonar el repositorio:**
 
 ```bash
-   git clone https://github.com/tu-usuario/game-survey-campus.git
+   git clone https://github.com/DavidCG2004/Game-Survey-Campus.git
    cd game-survey-campus
 ```
 
@@ -113,4 +113,4 @@ npx cap open android
 
 ## 👨‍💻 Autores
 
-- **[Tu Nombre / Tu Compañero]** — Desarrollo Mobile, Arquitectura & UI/UX — [GitHub](https://github.com/tu-usuario)
+- **[David Cajamarca]** — Desarrollo Mobile, Arquitectura & UI/UX — 
