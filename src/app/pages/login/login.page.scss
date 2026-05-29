@@ -1,0 +1,117 @@
+/* Color de fondo sutil si la variable global falla */
+.custom-bg {
+  --background: var(--ion-background-color, #f9fafb);
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Animación premium de entrada */
+.fade-in {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo-section {
+  margin-bottom: 2rem;
+  display: flex;
+  
+  .icon-box {
+    width: 56px;
+    height: 56px;
+    background: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.08);
+    
+    ion-icon {
+      font-size: 28px;
+      color: var(--ion-color-primary);
+    }
+  }
+}
+
+.header-section {
+  margin-bottom: 2.5rem;
+
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #111827; /* Dark text */
+    margin: 0 0 0.5rem 0;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #6b7280; /* Gray 500 */
+    margin: 0;
+    font-weight: 400;
+  }
+}
+
+.form-section {
+  margin-bottom: 2.5rem;
+
+  .minimal-input {
+    --background: #ffffff;
+    --border-color: #e5e7eb;
+    --border-width: 1px;
+    --border-radius: 14px;
+    --padding-start: 1.2rem;
+    --highlight-color-focused: var(--ion-color-primary);
+    
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    
+    &.item-has-focus {
+      --border-color: var(--ion-color-primary);
+      box-shadow: 0 0 0 4px rgba(var(--ion-color-primary-rgb), 0.1);
+    }
+
+    ion-icon {
+      color: #9ca3af;
+      margin-right: 10px;
+    }
+  }
+}
+
+.action-section {
+  .btn-primary {
+    --border-radius: 14px;
+    --box-shadow: 0 8px 16px rgba(var(--ion-color-primary-rgb), 0.2);
+    margin-bottom: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    height: 54px;
+    transition: transform 0.2s ease;
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+
+  .btn-secondary {
+    --color: #4b5563; /* Gray 600 */
+    font-weight: 500;
+    height: 50px;
+    --border-radius: 14px;
+  }
+}

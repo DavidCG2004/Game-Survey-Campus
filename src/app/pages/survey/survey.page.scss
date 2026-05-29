@@ -1,0 +1,236 @@
+/* Fondo general blanco puro para que los inputs grises destaquen */
+.custom-bg {
+  --background: #ffffff;
+}
+
+.transparent-toolbar {
+  --background: transparent;
+  
+  .header-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--ion-color-primary);
+  }
+}
+.form-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+/* Animaciones */
+.fade-in-stagger-1 { animation: fadeUp 0.4s ease forwards; opacity: 0; transform: translateY(15px); }
+.fade-in-stagger-2 { animation: fadeUp 0.4s ease forwards; opacity: 0; transform: translateY(15px); animation-delay: 0.1s; }
+.fade-in-stagger-3 { animation: fadeUp 0.4s ease forwards; opacity: 0; transform: translateY(15px); animation-delay: 0.2s; }
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+/* Títulos de sección */
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 1.5rem 0 1rem 0;
+  letter-spacing: -0.3px;
+}
+
+
+
+/*
+  INPUTS ESTILO "SOLID" 
+  Aspecto moderno (Apple/Fintech) con fondo gris y sin borde
+*/
+.modern-input {
+  --background: #ffffff; /* Blanco puro */
+  --border-radius: 12px;
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  --highlight-color-focused: var(--ion-color-primary); /* La línea inferior de color primario */
+  
+  margin-bottom: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  
+  &::part(label) {
+    font-weight: 600;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+  &.item-has-focus,
+  &:focus-within {
+    --background: transparent !important;     /* Fondo transparente al hacer click */
+    /* O si prefieres un color suave: */
+    /* --background: #f8fafc !important; */   /* Azul muy claro */
+    /* --background: #f1f5f9 !important; */   /* Gris muy claro */
+  }
+
+  /* Efecto de borde al enfocarse (recomendado) */
+  &.item-has-focus {
+    --border-color: var(--ion-color-primary);
+    --highlight-color-focused: var(--ion-color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--ion-color-primary-rgb), 0.12);
+  }
+  
+  /* ELIMINAMOS el bloque &.item-has-focus para que no cambie de color al tocarlo */
+}
+
+/* Grid Gap para las filas de dos columnas */
+.gap-row {
+  margin: 0 -5px;
+  ion-col {
+    padding: 0 5px;
+  }
+}
+
+.search-spinner {
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Resultados predictivos */
+.results-card {
+  background: #ffffff;
+  border-radius: 12px;
+  margin-top: -0.5rem;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+
+  .result-item {
+    display: flex;
+    align-items: center;
+    justify-content: center-left;
+    padding: 10px 15px;
+    border-bottom: 1px solid #f3f4f6;
+    
+    &:active { background: #f3f4f6; }
+    &:last-child { border-bottom: none; }
+
+    .game-thumbnail {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-right: 12px;
+    }
+
+    .game-info {
+      h3 { margin: 0 0 2px 0; font-size: 0.95rem; font-weight: 700; color: #111827; }
+      p { margin: 0; font-size: 0.8rem; color: #6b7280; font-weight: 500; }
+    }
+  }
+}
+
+/* Etiqueta de Juego Seleccionado */
+.selected-game-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0fdf4; /* Verde muy sutil */
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 1.2rem;
+
+  .info-group {
+    display: flex;
+    align-items: center;
+    
+    ion-icon { font-size: 24px; margin-right: 12px; }
+    
+    .text-group {
+      display: flex;
+      flex-direction: column;
+      
+      .selected-label { font-size: 0.75rem; color: #166534; font-weight: 700; text-transform: uppercase; }
+      .selected-name { font-size: 1.05rem; color: #14532d; font-weight: 800; }
+    }
+  }
+
+  .clear-icon { font-size: 24px; color: #9ca3af; padding: 5px; &:active { color: #ef4444; } }
+}
+
+/* Upload Box "Solid" para reemplazar el borde punteado */
+.solid-upload-box {
+  background: #f3f4f6;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+
+  ion-icon { font-size: 36px; color: #6b7280; margin-bottom: 10px; }
+  
+  .upload-text {
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 500;
+    text-align: center;
+    
+    .highlight { color: var(--ion-color-primary); font-weight: 600; }
+  }
+}
+
+
+/* Área para subir/tomar foto */
+.photo-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #d1d5db;
+  border-radius: 16px;
+  padding: 2.5rem 1rem;
+  background: #ffffff;
+  transition: border-color 0.2s, background 0.2s;
+  margin-bottom: 1.5rem;
+
+  &:active { background: #f9fafb; border-color: var(--ion-color-primary); }
+
+  .icon-circle {
+    width: 50px;
+    height: 50px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    
+    ion-icon { font-size: 24px; color: #6b7280; }
+  }
+
+  .title { font-weight: 600; color: #374151; font-size: 1rem; margin-bottom: 0.3rem; }
+  .subtitle { font-size: 0.85rem; color: #9ca3af; }
+}
+
+/* Preview de la foto capturada */
+.photo-preview-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  .photo-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .photo-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 1.5rem 1rem 1rem;
+    display: flex;
+    align-items: center;
+    color: white;
+    
+    ion-icon { font-size: 20px; margin-right: 8px; }
+    span { font-weight: 500; font-size: 0.9rem; }
+  }
+}

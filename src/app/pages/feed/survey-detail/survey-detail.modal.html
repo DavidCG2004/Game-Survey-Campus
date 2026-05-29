@@ -1,0 +1,88 @@
+<ion-content class="custom-bg">
+  
+  <!-- Contenedor principal de la imagen hero -->
+  <div class="hero-header">
+    <img 
+      [src]="survey.image_url" 
+      [alt]="survey.favorite_game" 
+      class="hero-image"
+      onerror="this.src='assets/placeholder.png'" 
+    />
+    
+    <!-- Botón flotante para cerrar -->
+    <ion-button fill="clear" class="close-btn" (click)="dismiss()">
+      <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+    </ion-button>
+    
+    <!-- Gradiente inferior para que resalte el contenido que le sigue -->
+    <div class="hero-gradient"></div>
+  </div>
+
+  <div class="modal-body fade-in">
+    
+    <!-- Chips de Categoría superior -->
+    <div class="chips-row">
+      <span class="soft-chip chip-genre">{{ survey.genre | uppercase }}</span>
+      <span class="soft-chip chip-age">{{ survey.age_range }}</span>
+    </div>
+
+    <!-- Título Principal -->
+    <h1 class="game-title">{{ survey.favorite_game }}</h1>
+    
+    <!-- Subtítulo de Autoría -->
+    <p class="respondent-subtitle">
+      Encuesta por <strong>{{ survey.respondent_name }}</strong> ({{ survey.role }})
+    </p>
+
+    <!-- Detalles con íconos (Grid) -->
+    <div class="details-grid">
+      
+      <!-- Plataforma -->
+      <div class="detail-item">
+        <div class="icon-box bg-blue"><ion-icon [name]="getPlatformIcon(survey.platform)"></ion-icon></div>
+        <div class="text-col">
+          <span class="label">Plataforma</span>
+          <span class="value">{{ survey.platform }}</span>
+        </div>
+      </div>
+
+      <!-- Ubicación -->
+      <div class="detail-item">
+        <div class="icon-box bg-red"><ion-icon name="location-outline"></ion-icon></div>
+        <div class="text-col">
+          <span class="label">{{ survey.campus_location }}</span>
+          <span class="value coords">({{ survey.latitude | number:'1.4-4' }}, {{ survey.longitude | number:'1.4-4' }})</span>
+        </div>
+      </div>
+
+      <!-- Fecha -->
+      <div class="detail-item">
+        <div class="icon-box bg-emerald"><ion-icon name="calendar-outline"></ion-icon></div>
+        <div class="text-col">
+          <span class="label">Fecha de registro</span>
+          <span class="value">{{ survey.created_at | date:'dd MMM yyyy, HH:mm' : '' : 'es-EC' }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Sección de Comentario (Si existe) -->
+    @if (survey.comment) {
+      <div class="comment-section">
+        <div class="section-header">
+          <ion-icon name="chatbubble-outline"></ion-icon>
+          <h3>Comentario del estudiante</h3>
+        </div>
+        <p class="comment-text">"{{ survey.comment }}"</p>
+      </div>
+    } @else {
+      <div class="comment-section empty-comment">
+        <ion-icon name="chatbubble-outline"></ion-icon>
+        <p>No se dejó comentario para este juego.</p>
+      </div>
+    }
+
+  </div>
+</ion-content>

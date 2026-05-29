@@ -1,0 +1,185 @@
+/* --- Variables Generales --- */
+.custom-bg {
+  --background: #ffffff;
+}
+
+.transparent-toolbar {
+  --background: transparent;
+}
+
+.close-btn {
+  --color: #111827;
+  --background: #f3f4f6;
+  --border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  
+  &::part(native) {
+    padding: 0;
+  }
+}
+
+/* --- Imagen de Evidencia --- */
+.evidence-container {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #f3f4f6;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .no-evidence {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    gap: 8px;
+
+    ion-icon { font-size: 40px; }
+    span { font-size: 0.9rem; font-weight: 500; }
+  }
+}
+
+/* --- Cuerpo del Detalle --- */
+.detail-body {
+  padding: 24px 20px;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  .genre-badge {
+    align-self: flex-start;
+    background: #f3f4f6;
+    color: var(--ion-color-primary, #4f46e5);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .game-title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+  }
+
+  .respondent {
+    margin: 0;
+    font-size: 1rem;
+    color: #6b7280;
+
+    strong { color: #111827; }
+    .role-tag { font-size: 0.85rem; color: #9ca3af; }
+  }
+}
+
+.divider {
+  border: 0;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 24px 0;
+}
+
+/* --- Lista de Metadatos Minimalista --- */
+.meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  /* AQUÍ ESTÁ EL SECRETO DEL DISEÑO ELEGANTE: 
+     Un ícono en un fondo neutro en lugar de mil colores. */
+  .icon-box {
+    width: 48px;
+    height: 48px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    ion-icon {
+      font-size: 22px;
+      color: #4b5563; /* Gris oscuro neutro */
+    }
+  }
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+
+    .label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .value {
+      font-size: 0.85rem;
+      color: #6b7280;
+
+      &.coords {
+        font-family: monospace;
+        letter-spacing: -0.5px;
+      }
+    }
+  }
+}
+
+/* --- Sección de Comentarios --- */
+.comment-section {
+  margin-top: 32px;
+
+  .comment-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+
+    ion-icon {
+      font-size: 18px;
+      color: #6b7280;
+    }
+  }
+
+  .comment-box {
+    background: #f9fafb;
+    border-left: 4px solid var(--ion-color-primary, #4f46e5);
+    padding: 16px;
+    border-radius: 0 8px 8px 0;
+
+    p {
+      margin: 0;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #4b5563;
+      line-height: 1.5;
+    }
+  }
+}

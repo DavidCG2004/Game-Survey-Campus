@@ -1,0 +1,73 @@
+<ion-content class="ion-padding custom-bg">
+  
+  <div class="register-container fade-in">
+    
+    <!-- Barra superior para el botón de regreso -->
+    <div class="top-bar">
+      <ion-button fill="clear" routerLink="/login" class="back-btn" size="small">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </div>
+
+    <!-- Sutil Logo representativo -->
+    <div class="logo-section">
+      <div class="icon-box">
+        <ion-icon name="person-add-outline"></ion-icon>
+      </div>
+    </div>
+    
+    <!-- Encabezado del Registro -->
+    <div class="header-section">
+      <h1>Crear Cuenta</h1>
+      <p>Ingresa tus datos para registrarte en la app.</p>
+    </div>
+
+    <!-- Formulario Reactivo -->
+    <form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+      <div class="form-section">
+        
+        <ion-input
+          type="email"
+          label="Correo electrónico"
+          labelPlacement="floating"
+          fill="outline"
+          shape="round"
+          class="minimal-input"
+          formControlName="email"
+          errorText="Ingresa un correo electrónico válido">
+          <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
+        </ion-input>
+
+        <ion-input
+          type="password"
+          label="Contraseña"
+          labelPlacement="floating"
+          fill="outline"
+          shape="round"
+          class="minimal-input ion-margin-top"
+          formControlName="password"
+          errorText="Mínimo 6 caracteres">
+          <ion-icon slot="start" name="lock-closed-outline" aria-hidden="true"></ion-icon>
+        </ion-input>
+
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="action-section">
+        <ion-button 
+          type="submit" 
+          expand="block" 
+          shape="round" 
+          class="btn-primary" 
+          [disabled]="registerForm.invalid">
+          Registrarse
+        </ion-button>
+
+        <ion-button routerLink="/login" fill="clear" expand="block" class="btn-secondary">
+          Ya tengo cuenta
+        </ion-button>
+      </div>
+    </form>
+
+  </div>
+</ion-content>

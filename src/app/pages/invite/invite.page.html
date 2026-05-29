@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border custom-bg">
+  <ion-toolbar class="transparent-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="" color="dark"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-bg ion-padding" [fullscreen]="true">
+  
+  <div class="promo-container fade-in">
+    
+    <!-- Ícono / Ilustración Hero -->
+    <div class="hero-icon-box">
+      <ion-icon name="game-controller-outline"></ion-icon>
+    </div>
+
+    <!-- Títulos -->
+    <h1 class="main-title">Únete a la Beta</h1>
+    <p class="promo-message">
+      “Estamos probando una app de videojuegos desarrollada en Ionic. ¿Te gustaría crear una cuenta y probarla?”
+    </p>
+
+    <!-- Tarjeta del Código QR -->
+    <div class="qr-card">
+      <div class="qr-header">
+        <ion-icon name="qr-code-outline"></ion-icon>
+        <span>Escanéame para descargar</span>
+      </div>
+      
+      <div class="qr-image-wrapper">
+        <!-- Reemplaza este src por tu imagen del QR real generado (ej. un QR hacia tu GitHub) -->
+        <!-- Si usas un placeholder temporal, puedes usar una API gratuita de QRs -->
+        <img 
+          src="assets/GameSurveyCampus.png" 
+          alt="Código QR de Descarga"
+        />
+      </div>
+      <p class="qr-hint">Apunta con la cámara de tu celular</p>
+    </div>
+
+    <!-- Botones de Acción (CTAs) -->
+    <div class="actions-container">
+      <button class="btn-primary" (click)="goToRegister()">
+        <ion-icon name="person-add-outline"></ion-icon>
+        Crear una cuenta ahora
+      </button>
+
+      <button class="btn-secondary" (click)="downloadAPK()">
+        <ion-icon name="download-outline"></ion-icon>
+        Descargar APK (Android)
+      </button>
+    </div>
+
+  </div>
+
+</ion-content>

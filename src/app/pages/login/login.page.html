@@ -1,0 +1,55 @@
+<ion-content class="ion-padding custom-bg">
+  <div class="login-container fade-in">
+    
+    <!-- Sutil Logo representativo -->
+    <div class="logo-section">
+      <div class="icon-box">
+        <ion-icon name="game-controller-outline"></ion-icon>
+      </div>
+    </div>
+
+    <!-- Encabezado -->
+    <div class="header-section">
+      <h1>Bienvenido</h1>
+      <p>Ingresa tus datos para continuar.</p>
+    </div>
+
+    <!-- Formulario -->
+    <div class="form-section">
+      <ion-input
+        type="email"
+        label="Correo electrónico"
+        labelPlacement="floating"
+        fill="outline"
+        shape="round"
+        class="minimal-input"
+        [ngModel]="email()"
+        (ngModelChange)="email.set($event)">
+        <ion-icon slot="start" name="mail-outline" aria-hidden="true"></ion-icon>
+      </ion-input>
+
+      <ion-input
+        type="password"
+        label="Contraseña"
+        labelPlacement="floating"
+        fill="outline"
+        shape="round"
+        class="minimal-input ion-margin-top"
+        [ngModel]="password()"
+        (ngModelChange)="password.set($event)">
+        <ion-icon slot="start" name="lock-closed-outline" aria-hidden="true"></ion-icon>
+      </ion-input>
+    </div>
+
+    <!-- Botones -->
+    <div class="action-section">
+      <ion-button expand="block" shape="round" class="btn-primary" (click)="login()">
+        Iniciar Sesión
+      </ion-button>
+
+      <ion-button expand="block" shape="round" routerLink="/register" fill="clear">Crear cuenta</ion-button>
+      
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border custom-bg">
+  <ion-toolbar class="transparent-toolbar">
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()" class="logout-btn" fill="clear">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        Salir
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+  
+  <div class="menu-container">
+    
+    <!-- Sección de Bienvenida -->
+    <div class="greeting-section fade-in">
+      <div class="icon-box">
+        <ion-icon name="game-controller-outline"></ion-icon>
+      </div>
+      <p class="subtitle">Game Survey Campus</p>
+      <h1 class="title">¿Qué deseas hacer?</h1>
+    </div>
+
+    <!-- Contenedor de Accesos Rápidos -->
+    <div class="cards-container">
+
+      <!-- 1. Tarjeta Formulario -->
+      <div class="minimal-card ion-activatable ripple-parent fade-in-stagger-1" (click)="navigateTo('/survey')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div class="icon-wrapper tint-primary">
+          <ion-icon name="document-text-outline"></ion-icon>
+        </div>
+        <div class="card-content">
+          <h3>Nueva Encuesta</h3>
+          <p>Registrar a un estudiante.</p>
+        </div>
+        <ion-icon name="chevron-forward-outline" class="nav-icon"></ion-icon>
+      </div>
+
+      <!-- 2. Tarjeta Feed -->
+      <div class="minimal-card ion-activatable ripple-parent fade-in-stagger-2" (click)="navigateTo('/feed')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div class="icon-wrapper tint-secondary">
+          <ion-icon name="list-outline"></ion-icon>
+        </div>
+        <div class="card-content">
+          <h3>Feed de Registros</h3>
+          <p>Ver encuestas y evidencias.</p>
+        </div>
+        <ion-icon name="chevron-forward-outline" class="nav-icon"></ion-icon>
+      </div>
+
+      <!-- 3. Tarjeta QR / Promoción (Ajusta la ruta según la llames) -->
+      <div class="minimal-card ion-activatable ripple-parent fade-in-stagger-3" (click)="navigateTo('/invite')">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div class="icon-wrapper tint-tertiary">
+          <ion-icon name="qr-code-outline"></ion-icon>
+        </div>
+        <div class="card-content">
+          <h3>Compartir App</h3>
+          <p>Mostrar QR e invitación.</p>
+        </div>
+        <ion-icon name="chevron-forward-outline" class="nav-icon"></ion-icon>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

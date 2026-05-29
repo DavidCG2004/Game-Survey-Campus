@@ -1,0 +1,107 @@
+<ion-header class="ion-no-border custom-bg">
+  <ion-toolbar class="transparent-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="fw-bold">Feed del Campus</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding-horizontal custom-bg">
+  
+  <ion-header collapse="condense" class="ion-no-border custom-bg">
+    <ion-toolbar>
+      <ion-title size="large" class="fw-bold title-large text-center">Radar Gamer</ion-title>
+      <p class="subtitle-center">Descubre qué juegan en la universidad</p>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- Estado de Carga -->
+  @if (isLoading()) {
+    <div class="loading-container">
+      <ion-spinner name="crescent" color="primary"></ion-spinner>
+    </div>
+  }
+
+  <!-- Todo este bloque se muestra solo si hay datos -->
+  @if (!isLoading() && surveys().length > 0) {
+    
+    <!-- 1. Métricas del Dashboard -->
+    <div class="dashboard-stats fade-in">
+      <div class="stat-card">
+        <ion-icon name="document-text-outline"></ion-icon>
+        <div class="stat-info">
+          <span class="stat-value">{{ totalFiltered() }}</span>
+          <span class="stat-label">Registros</span>
+        </div>
+      </div>
+      <div class="stat-card">
+        <ion-icon name="desktop-outline"></ion-icon>
+        <div class="stat-info">
+          <span class="stat-value">{{ topPlatform() }}</span>
+          <span class="stat-label">Plataforma TOP</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Filtros del Dashboard -->
+    <div class="filters-container fade-in">
+      <ion-segment [value]="selectedRole()" (ionChange)="onRoleChange($event)" mode="ios">
+        <ion-segment-button value="Todos">
+          <ion-label>Todos</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Estudiante">
+          <ion-label>Estudiantes</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Docente">
+          <ion-label>Docentes</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <!-- 3. Catálogo Grid -->
+    <div class="survey-grid">
+      @for (survey of filteredSurveys(); track survey.id; let i = $index) {
+        
+        <div class="survey-item fade-in-stagger" [style.animation-delay]="(i * 0.05) + 's'" (click)="openDetail(survey)">
+          
+          <div class="image-wrapper">
+            <img 
+              [src]="survey.image_url" 
+              [alt]="survey.favorite_game" 
+              loading="lazy" 
+              onerror="this.src='assets/placeholder.png'" 
+            />
+            
+            <div class="rating-badge">
+              <ion-icon [name]="getPlatformIcon(survey.platform)"></ion-icon>
+              <span>{{ survey.platform }}</span>
+            </div>
+          </div>
+
+          <div class="survey-info">
+            <h2 class="title">{{ survey.favorite_game }}</h2>
+            <span class="genre">{{ survey.genre }}</span>
+            <p class="respondent">
+              <ion-icon name="person-outline"></ion-icon>
+              por {{ survey.respondent_name }}
+            </p>
+          </div>
+
+        </div>
+      }
+    </div>
+  }
+
+  <!-- Estado Vacío -->
+  @if (!isLoading() && surveys().length === 0) {
+    <div class="empty-state fade-in">
+      <div class="icon-circle">
+        <ion-icon name="game-controller-outline"></ion-icon>
+      </div>
+      <h2>Sin registros</h2>
+      <p>Aún no hay videojuegos en el catálogo.</p>
+    </div>
+  }
+
+</ion-content>

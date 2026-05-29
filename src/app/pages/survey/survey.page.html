@@ -1,0 +1,228 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="transparent-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="" color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-title">Nueva Encuesta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+  <div class="form-wrapper">
+    <form [formGroup]="surveyForm" (ngSubmit)="submitSurvey()" class="modern-form">
+
+      <!-- ── SECCIÓN 1: DATOS DEL ENCUESTADO ── -->
+      <div class="form-section fade-in-stagger-1">
+        <h2 class="section-title">Datos del encuestado</h2>
+
+        <ion-input
+          label="Nombre o alias"
+          labelPlacement="stacked"
+          fill="outlined"
+          class="modern-input"
+          formControlName="respondent_name"
+          placeholder="Ej. Juan Pérez, GamerX">
+        </ion-input>
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="gap-row">
+            <ion-col>
+              <ion-select
+                label="Rango de edad"
+                labelPlacement="stacked"
+                fill="solid"
+                class="modern-input"
+                formControlName="age_range"
+                interface="popover">
+                <ion-select-option value="Menos de 15">< 15 años</ion-select-option>
+                <ion-select-option value="15-20">15 – 20</ion-select-option>
+                <ion-select-option value="21-30">21 – 30</ion-select-option>
+                <ion-select-option value="31-45">31 – 45</ion-select-option>
+                <ion-select-option value="Más de 45">> 45 años</ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col>
+              <ion-select
+                label="Rol"
+                labelPlacement="stacked"
+                fill="solid"
+                class="modern-input"
+                formControlName="role"
+                interface="popover">
+                <ion-select-option value="Estudiante">Estudiante</ion-select-option>
+                <ion-select-option value="Docente">Docente</ion-select-option>
+                <ion-select-option value="Administrativo">Administrativo</ion-select-option>
+                <ion-select-option value="Visitante">Visitante</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-select
+          label="Lugar del campus"
+          labelPlacement="stacked"
+          fill="solid"
+          class="modern-input"
+          formControlName="campus_location"
+          interface="popover">
+          <ion-select-option value="Biblioteca general">Biblioteca General</ion-select-option>
+          <ion-select-option value="Dgip">Dgip</ion-select-option>
+          <ion-select-option value="Biblioteca Facultad de Ciencias">Biblioteca Facultad de Ciencias</ion-select-option>
+          <ion-select-option value="Cafetería">Cafetería</ion-select-option>
+          <ion-select-option value="Canchas Deportivas">Canchas Deportivas</ion-select-option>
+          <ion-select-option value="Canchas de Mecánica">Canchas de Mecánica</ion-select-option>
+          <ion-select-option value="Plaza EARME">Plaza EARME</ion-select-option>
+          <ion-select-option value="Laboratorio">Laboratorio</ion-select-option>
+          <ion-select-option value="Aso Estot">Aso Estot</ion-select-option>
+          <ion-select-option value="Aso de Ciencias">Aso de Ciencias</ion-select-option>
+          <ion-select-option value="Aso de Mecanica">Aso de Mecanica</ion-select-option>
+          <ion-select-option value="Aso de Quimica">Aso de Quimica</ion-select-option>
+          <ion-select-option value="Aso de Civil">Aso de Civil</ion-select-option>
+          <ion-select-option value="Aso de Sistemas">Aso de Sistemas</ion-select-option>
+          <ion-select-option value="Aso de Petroleos">Aso de Petroleos</ion-select-option>
+          <ion-select-option value="Cec">Cec</ion-select-option>
+          <ion-select-option value="Facultad de Ciencias">Facultad de Ciencias</ion-select-option>
+          <ion-select-option value="Facultad de Electricidad">Facultad de Electricidad</ion-select-option>
+          <ion-select-option value="Facultad de Ciencias Administrativas">Facultad de Ciencias Administrativas</ion-select-option>
+          <ion-select-option value="Aulas">Aulas</ion-select-option>
+          <ion-select-option value="Otro">Otro</ion-select-option>
+        </ion-select>
+      </div>
+
+      <!-- ── SECCIÓN 2: VIDEOJUEGO ── -->
+      <div class="form-section fade-in-stagger-2">
+        <h2 class="section-title">Videojuego preferido</h2>
+
+        <!-- Buscador predictivo -->
+        <ion-input
+          label="Buscar juego"
+          labelPlacement="stacked"
+          fill="outlined"
+          class="modern-input"
+          formControlName="game_search"
+          placeholder="Ej. Minecraft, FIFA...">
+          <ion-icon name="search-outline" slot="start" color="medium"></ion-icon>
+          @if (isSearching()) {
+            <ion-spinner name="crescent" slot="end" class="search-spinner"></ion-spinner>
+          }
+        </ion-input>
+
+        <!-- Resultados -->
+        @if (searchResults().length > 0) {
+          <div class="results-card">
+            @for (game of searchResults(); track game.id) {
+              <div class="result-item" (click)="selectGame(game)">
+                <img [src]="game.thumbnail" alt="thumbnail" class="game-thumbnail">
+                <div class="game-info">
+                  <h3>{{ game.title }}</h3>
+                  <p>{{ game.genre }} · {{ game.platform }}</p>
+                </div>
+              </div>
+            }
+          </div>
+        }
+
+        <!-- Juego seleccionado -->
+        @if (surveyForm.controls.favorite_game.value) {
+          <div class="selected-game-box">
+            <div class="info-group">
+              <ion-icon name="game-controller" color="primary"></ion-icon>
+              <div class="text-group">
+                <span class="selected-label">Juego Seleccionado</span>
+                <strong class="selected-name">{{ surveyForm.controls.favorite_game.value }}</strong>
+              </div>
+            </div>
+          <ion-icon name="close-circle-outline" class="clear-icon" (click)="clearGame()"></ion-icon>
+          </div>
+        }
+
+        <ion-grid class="ion-no-padding">
+          <ion-row class="gap-row">
+            <ion-col>
+              <ion-select
+                label="Plataforma"
+                labelPlacement="stacked"
+                fill="solid"
+                class="modern-input"
+                formControlName="platform"
+                interface="popover">
+                <ion-select-option value="PC">PC</ion-select-option>
+                <ion-select-option value="Consola">Consola</ion-select-option>
+                <ion-select-option value="Móvil">Móvil</ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col>
+              <ion-select
+                label="Género"
+                labelPlacement="stacked"
+                fill="solid"
+                class="modern-input"
+                formControlName="genre"
+                interface="popover">
+                <ion-select-option value="Acción">Acción</ion-select-option>
+                <ion-select-option value="Aventura">Aventura</ion-select-option>
+                <ion-select-option value="Simulación">Simulación</ion-select-option>
+                <ion-select-option value="Deportes">Deportes</ion-select-option>
+                <ion-select-option value="Estrategia">Supervivencia</ion-select-option>
+                <ion-select-option value="RPG">Shooter</ion-select-option>
+                <ion-select-option value="RPG">Terror</ion-select-option>
+                <ion-select-option value="RPG">Estrategia</ion-select-option>
+                <ion-select-option value="RPG">Carreras</ion-select-option>
+                <ion-select-option value="RPG">RPG</ion-select-option>
+                <ion-select-option value="RPG">MOBA</ion-select-option>
+                <ion-select-option value="Otro">Otro</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-textarea
+          label="Comentario (opcional)"
+          labelPlacement="stacked"
+          fill="outlined"
+          class="modern-input"
+          formControlName="comment"
+          placeholder="¿Por qué es tu favorito?"
+          [autoGrow]="true"
+          rows="2">
+        </ion-textarea>
+      </div>
+
+    <!-- ── SECCIÓN 3: EVIDENCIA FOTOGRÁFICA ── -->
+    <div class="form-section fade-in-stagger-3">
+      <h2 class="section-title">Evidencia fotográfica</h2>
+
+      @if (evidencePhoto()) {
+        <div class="photo-preview-wrapper" (click)="takePhoto()">
+          <img [src]="evidencePhoto()!.webviewPath" alt="Evidencia capturada" class="photo-preview"/>
+          <div class="photo-overlay">
+            <ion-icon name="camera-outline"></ion-icon>
+            <span>Cambiar foto</span>
+          </div>
+        </div>
+      } @else {
+        <div class="photo-placeholder" (click)="takePhoto()">
+          <div class="icon-circle">
+            <ion-icon [name]="isNative ? 'camera-outline' : 'images-outline'"></ion-icon>
+          </div>
+          <span class="title">{{ isNative ? 'Toca para capturar foto' : 'Seleccionar imagen' }}</span>
+          <span class="subtitle">Obligatorio para validar la encuesta</span>
+        </div>
+      }
+    </div>
+      
+
+      <!-- ── BOTÓN GUARDAR ── -->
+      <ion-button
+        expand="block"
+        type="submit"
+        shape="round"
+        class="btn-primary"
+        [disabled]="surveyForm.invalid || !evidencePhoto() || isSubmitting()">
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+        {{ isSubmitting() ? 'Procesando...' : 'Guardar Encuesta' }}
+      </ion-button>
+
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,127 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+ 
+/* ======================================================
+   Quitar fondo gris de las opciones seleccionadas en Popovers
+   ====================================================== */
+ion-select-popover ion-item {
+  /* Quita el fondo cuando se mantiene presionado (hover/focus) */
+  --background-hover: transparent;
+  --background-focused: transparent;
+}
+
+/* Quita el fondo gris permanente de la opción ya seleccionada */
+ion-select-popover ion-item.item-radio-checked {
+  --background: transparent;
+}
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+
+/* Importar tipografía moderna */
+
+:root {
+  /* Establecer tipografía global para todo Ionic */
+  
+  /* Ajuste de paleta minimalista (puedes poner esto en variables.scss) */
+  --ion-color-primary: #111827; /* Casi negro para un look elegante */
+  --ion-color-primary-rgb: 17,24,39;
+  --ion-color-primary-contrast: #ffffff;
+  
+  --ion-background-color: #f9fafb; /* Fondo ligeramente gris para dar contraste a los inputs */
+}
+
+
+.age-range-popover {
+  --width: 280px;
+  --max-height: 320px;
+  
+  ion-list {
+    padding: 8px 0;
+  }
+
+  ion-item {
+    --padding-start: 16px;
+    --padding-end: 16px;
+    --inner-padding-end: 16px;
+    border-radius: 12px;
+    margin: 4px 8px;
+  }
+
+  ion-item:hover {
+    background: var(--ion-color-light-tint);
+  }
+}
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/*@import '@ionic/angular/css/palettes/dark.system.css';*/ 
+
+.ion-palette-dark {
+  color-scheme: dark;
+
+  --ion-color-primary: #428cff;
+  --ion-color-primary-rgb: 66, 140, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-shade: #3a7be0;
+  --ion-color-primary-tint: #5598ff;
+
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18, 18, 18;
+
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+
+  --ion-color-step-50: #1e1e1e;
+  --ion-color-step-100: #2a2a2a;
+  --ion-color-step-150: #363636;
+  --ion-color-step-200: #414141;
+  --ion-color-step-250: #4d4d4d;
+  --ion-color-step-300: #595959;
+  --ion-color-step-350: #656565;
+  --ion-color-step-400: #717171;
+  --ion-color-step-450: #7d7d7d;
+  --ion-color-step-500: #898989;
+  --ion-color-step-550: #949494;
+  --ion-color-step-600: #a0a0a0;
+  --ion-color-step-650: #acacac;
+  --ion-color-step-700: #b8b8b8;
+  --ion-color-step-750: #c4c4c4;
+  --ion-color-step-800: #d0d0d0;
+  --ion-color-step-850: #dbdbdb;
+  --ion-color-step-900: #e7e7e7;
+  --ion-color-step-950: #f3f3f3;
+
+  --ion-item-background: #1e1e1e;
+  --ion-toolbar-background: #1f1f1f;
+  --ion-tab-bar-background: #1f1f1f;
+  --ion-card-background: #1e1e1e;
+}
